@@ -8,17 +8,16 @@
 import SwiftUI
 
 struct SecondView: View {
+    @Binding var isShowBView: Bool
     var body: some View {
         ZStack {
-            Color.green
+            Color.orange
                 .ignoresSafeArea()
-            Text("SecondView")
+            Button {
+                isShowBView = false
+            } label: {
+                Text("閉じる").font(.largeTitle).padding().background(.green).foregroundColor(.white).cornerRadius(10)
+            }
         }
-    }
-}
-
-struct SecondView_Previews: PreviewProvider {
-    static var previews: some View {
-        SecondView()
     }
 }

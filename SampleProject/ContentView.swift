@@ -8,28 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var isShowSecondView = false
+    @State var isShowModal = false
     
     var body: some View {
-        NavigationStack {
-            VStack {
-                NavigationLink {
-                    SecondView()
-                } label: {
-                    Text("SecondViewへナビ遷移")
-                }
-                Button("SecondViewへモーダル遷移") {
-                    isShowSecondView = true
-                }.sheet(isPresented: $isShowSecondView) {
-                    SecondView()
-                        .presentationDetents([.medium])
-                }
-            }.navigationTitle("画面1")
+        VStack {
+            Button {
+                isShowModal = true
+            } label: {
+                Text("モーダル表示")
+            }.sheet(isPresented: $isShowModal) {
+                SecondView(isShowBView: $isShowModal)
+            }
         }
-
-        
     }
- 
 }
 
 struct ContentView_Previews: PreviewProvider {

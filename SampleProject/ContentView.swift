@@ -8,45 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var randomNumber = 1
-    @State private var timer: Timer?
-    @State private var isRolling = false
+    @State var isShowSecondView = false
     
     var body: some View {
-        VStack {
-            Spacer()
-            Image(systemName: "die.face.\(randomNumber)")
-                .resizable()
-                .scaledToFit()
-                .frame(width: UIScreen.main.bounds.width / 2)
-                .padding()
-            Spacer()
-            Button {
-                playDice()
-            } label: {
-                Text("サイコロをふる")
-                    .padding()
-                    .background(.orange)
-                    .foregroundColor(.black)
-                    .cornerRadius(10)
-            }.disabled(isRolling)
-            Spacer()
+        NavigationStack {
+            VStack {
+                NavigationLink {
+                    SecondView()
+                } label: {
+                    Text("SecondViewへナビ遷移")
+                }
+                Button("SecondViewへモーダル遷移") {
+                    isShowSecondView = true
+                }.sheet(isPresented: $isShowSecondView) {
+                    SecondView()
+                        .presentationDetents([.medium])
+                }
+            }.navigationTitle("画面1")
         }
-    }
-    
-    private func playDice() {
-        isRolling = true
-        print("ボタンが押されたよ")
-        // 0.1秒ごとにタイマーが発火
-        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
-            randomNumber = Int.random(in: 1...6)
-        }
-        // 0.5秒後にタイマーを止める
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            timer?.invalidate()
-            timer = nil
-            isRolling = false
-        }
+
+        
     }
  
 }

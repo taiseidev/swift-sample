@@ -8,18 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var isShowModal = false
+    @State var isShowAlert = false
     
     var body: some View {
         VStack {
             Button {
-                isShowModal = true
+                isShowAlert = true
             } label: {
-                Text("モーダル表示")
-            }.sheet(isPresented: $isShowModal) {
-                SecondView(isShowBView: $isShowModal)
+                Text("アラートを表示")
+            }.alert("タイトル", isPresented: $isShowAlert) {
+                Button("キャンセル") {}
+                Button("OK") {}
+            } message: {
+                Text("ここに詳細メッセージを書きます")
             }
-        }
+        }.padding()
     }
 }
 

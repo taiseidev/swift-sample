@@ -7,26 +7,39 @@
 
 import SwiftUI
 
+struct TaskData: Identifiable {
+    var title: String
+    var completed: Bool
+    var id = UUID()
+}
+
 struct ContentView: View {
-    @State var isShowDialog = false
+    @State var taskData = [
+        TaskData(title: "ジョギングする", completed: false),
+        TaskData(title: "お花に水をやる", completed: false),
+        TaskData(title: "部屋の掃除をする", completed: false),
+        TaskData(title: "本を読む", completed: false)
+    ]
     
     var body: some View {
-        VStack {
-            Button {
-                // ここに処理を追記する
-                isShowDialog = true
-            } label: {
-                Text("ダイアログを表示")
-            }.confirmationDialog("タイトル", isPresented: $isShowDialog) {
-                // ボタンを配置する
-                Button("選択肢1") {}
-                Button("選択肢2") {}
-            } message: {
-                Text("メッセージを表示しています。")
-            }
-        }.padding()
+        NavigationStack {
+            List(0..<taskData.count, id:\.self) { index in
+                Button {
+                    taskData[index].completed.toggle()
+                } label: {
+                    HStack {
+                        taskData[index].completed ?
+                        Image(systemName: "checkmark.circle.fill") :
+                        Image(systemName: "circle")
+                        Text(taskData[index].title)
+                    }.foregroundColor(.primary)
+                }
+                
+            }.navigationTitle("ToDoリスト")
+        }
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

@@ -24,26 +24,30 @@ struct ContentView: View {
         "trash.circle.fill",
         "trash.square",
         "trash.square.fill",
-        "trash.slash"
+        "trash.slash",
     ]
     
-    let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
+    let rows: [GridItem] = Array(repeating: .init(.flexible()), count: 1)
     
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: columns, spacing: 20) {
+        ScrollView(.horizontal) {
+            LazyHGrid(rows: rows) {
                 ForEach(symbols, id: \.self) { symbol in
                     Image(systemName: symbol)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 50, height: 50)
                         .padding(20)
-                        .background(.black)
-                        .foregroundColor(.white)
+                        .background(.white)
+                        .foregroundColor(.black)
                         .cornerRadius(10)
                 }
             }
         }
+        .frame(height: 130)
+        .background(.gray)
+        .cornerRadius(10)
+        .padding()
     }
 }
 

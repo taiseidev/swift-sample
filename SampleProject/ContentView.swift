@@ -1,34 +1,52 @@
 import SwiftUI
 
+class Pet: ObservableObject {
+    @Published var name = ""
+    @Published var weight = ""
+    @Published var height = ""
+    @Published var age = ""
+}
+
 struct ContentView: View {
-    @State var inputText = ""
-    @State var isShowInputView = false
+    @ObservedObject var pet: Pet
+    @State var isShowInfoView = false
     
     var body: some View {
         VStack {
-            Text("あなたの名前は？：\(inputText)")
-                .padding()
-            Button("名前を入力する") {
-                isShowInputView = true
-            }.sheet(isPresented: $isShowInputView) {
-                InputView(inputText: $inputText)
+            Text("あなたのペット情報を入力してください。")
+            TextField("名前", text: $pet.name)
+            TextField("体重", text: $pet.weight)
+            TextField("体長", text: $pet.height)
+            TextField("年齢", text: $pet.age)
+            Button("決定") {
+                isShowInfoView = true
+            }.sheet(isPresented: $isShowInfoView) {
+                InfoView(pet: pet)
             }
+        }
+        .textFieldStyle(.roundedBorder)
+        .padding()
+    }
+}
+
+struct InfoView: View {
+    @ObservedObject var pet: Pet
+    
+    var body: some View {
+        VStack {
+            Text("あなたのペット情報")
+            Text("名前：\(pet.name)")
+            Text("体重：\(pet.weight)")
+            Text("身長：\(pet.height)")
+            Text("年齢：\(pet.age)")
         }
     }
 }
 
-struct InputView: View {
-    @Binding var inputText: String
-    
-    var body: some View {
-        TextField("", text: $inputText)
-            .background(.gray)
-            .padding()
-    }
-}
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+//}

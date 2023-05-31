@@ -12,6 +12,7 @@ struct SampleProjectApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView(pet: Pet())
+                .environmentObject(Pet())
         }
     }
 }

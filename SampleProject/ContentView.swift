@@ -8,7 +8,7 @@ class Pet: ObservableObject {
 }
 
 struct ContentView: View {
-    @ObservedObject var pet: Pet
+    @EnvironmentObject var pet: Pet
     @State var isShowInfoView = false
     
     var body: some View {
@@ -21,7 +21,7 @@ struct ContentView: View {
             Button("決定") {
                 isShowInfoView = true
             }.sheet(isPresented: $isShowInfoView) {
-                InfoView(pet: pet)
+                InfoView()
             }
         }
         .textFieldStyle(.roundedBorder)
@@ -30,7 +30,7 @@ struct ContentView: View {
 }
 
 struct InfoView: View {
-    @ObservedObject var pet: Pet
+    @EnvironmentObject var pet: Pet
     
     var body: some View {
         VStack {

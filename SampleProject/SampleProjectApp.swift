@@ -11,8 +11,7 @@ import SwiftUI
 struct SampleProjectApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(Pet())
+            MenuView()
         }
     }
 }

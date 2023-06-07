@@ -15,6 +15,7 @@
 		7C644DCF2A1BA3E6004AA1E1 /* SampleProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C644DCE2A1BA3E6004AA1E1 /* SampleProjectUITests.swift */; };
 		7C644DD12A1BA3E6004AA1E1 /* SampleProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C644DD02A1BA3E6004AA1E1 /* SampleProjectUITestsLaunchTests.swift */; };
 		7C644DDE2A1E5141004AA1E1 /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C644DDD2A1E5141004AA1E1 /* SecondView.swift */; };
+		7CFEF8F42A3141170056F361 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFEF8F32A3141170056F361 /* MenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		7C644DCE2A1BA3E6004AA1E1 /* SampleProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleProjectUITests.swift; sourceTree = "<group>"; };
 		7C644DD02A1BA3E6004AA1E1 /* SampleProjectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleProjectUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7C644DDD2A1E5141004AA1E1 /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
+		7CFEF8F32A3141170056F361 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 		7C644DB12A1BA3E5004AA1E1 /* SampleProject */ = {
 			isa = PBXGroup;
 			children = (
+				7CFEF8F32A3141170056F361 /* MenuView.swift */,
 				7C644DB22A1BA3E5004AA1E1 /* SampleProjectApp.swift */,
 				7C644DB42A1BA3E5004AA1E1 /* ContentView.swift */,
 				7C644DDD2A1E5141004AA1E1 /* SecondView.swift */,
@@ -263,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C644DDE2A1E5141004AA1E1 /* SecondView.swift in Sources */,
+				7CFEF8F42A3141170056F361 /* MenuView.swift in Sources */,
 				7C644DB52A1BA3E5004AA1E1 /* ContentView.swift in Sources */,
 				7C644DB32A1BA3E5004AA1E1 /* SampleProjectApp.swift in Sources */,
 			);
